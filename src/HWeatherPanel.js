@@ -3,11 +3,33 @@ import Card from '@material-ui/core/Card';
 
 function HWeatherPanel({hWeather}) {
     
+    const iconDisplay = ((w)=>{
+        if(w.weather[0].main==="Rain"){
+            return "🌧"; 
+        }
+        else if(w.weather[0].main==="Clouds"){
+            return "⛅️";
+        }
+        else if(w.weather[0].main==="Clear"){
+            return "☀️";
+        }
+        else if(w.weather[0].main==="Snow"){
+            return "🌨";
+        }
+        else{
+            return "🌤";
+        }
+
+
+    })
     return (       
         <div>
-        <h2>Hourly Forecast</h2>
         {hWeather.hourly.map((weather,index) => (
-        <p>In {index} hours: {weather.weather[0].main}, {weather.temp}°C</p>))}
+        <Card elevation="3" style={{marginBottom:5}}>
+        <p>{iconDisplay(weather)} In {index} hours: {weather.weather[0].main}, {weather.temp}°C</p>
+        </Card>
+        
+        ))}
         </div>
     )
 }

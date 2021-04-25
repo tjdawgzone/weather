@@ -31,9 +31,17 @@ function App() {
       });
     }
 
-    const handleChange=((e,val)=>{
-      setPane(val);
-    });
+  function a11yProps(index) {
+    return {
+      id: `scrollable-auto-tab-${index}`,
+      "aria-controls": `scrollable-auto-tabpanel-${index}`
+    };
+  }
+
+  function handleChange(event, newPane) {
+    setPane(newPane);
+  }
+
 
   if(zipSelect===false){
     return (<div class="center" style={{ textAlign: "center" }}>
@@ -64,14 +72,22 @@ function App() {
   }
   
   else if((weather!==null)&&(hWeather!==null)){
-    console.log(weather);
-    console.log(hWeather);
   return (
     <div style={{textAlign: "center" }}>
      <h1>Here's the weather in {weather.name}.</h1>
     <CWeatherPanel weather={weather}/>
-    <HWeatherPanel hWeather={hWeather}/>
-    <DWeatherPanel hWeather={hWeather}/>
+    <AppBar position="static" color="default">
+        <Tabs style={{margin:"auto"}} value={pane} onChange={handleChange}>
+          <Tab label="Hourly Weather" {...a11yProps(0)} />
+          <Tab label="Daily Weather" {...a11yProps(1)} />
+        </Tabs>
+      </AppBar>
+      <TabPanel value={pane} index={0}>
+        <HWeatherPanel hWeather={hWeather}/>
+      </TabPanel>
+      <TabPanel value={pane} index={1}>
+        <DWeatherPanel hWeather={hWeather}/>
+      </TabPanel>
     </div>
   );
   }
