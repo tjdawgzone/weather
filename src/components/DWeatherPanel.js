@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Card from '@material-ui/core/Card';
-import { sizing, width } from '@material-ui/system';
 
 function DWeatherPanel({hWeather}) {
 

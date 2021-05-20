@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import CWeatherPanel from "./CWeatherPanel";
-import HWeatherPanel from "./HWeatherPanel";
-import DWeatherPanel from "./DWeatherPanel";
+import React, { useState } from "react";
+import CWeatherPanel from "./components/CWeatherPanel";
+import HWeatherPanel from "./components/HWeatherPanel";
+import DWeatherPanel from "./components/DWeatherPanel";
 import {CircularProgress, TextField, Button, Tab, Tabs, AppBar} from '@material-ui/core';
-import TabPanel from "./TabPanel";
+import TabPanel from "./components/TabPanel";
 import "./App.css";
 
 
