@@ -71,7 +71,7 @@ function App() {
     )
   }
   
-  else if((weather!==null)&&(hWeather!==null)){
+  if((weather!==null)&&(hWeather!==null)){
   return (
     <div style={{textAlign: "center" }}>
      <h1>Here's the weather in {weather.name}.</h1>
@@ -91,12 +91,11 @@ function App() {
     </div>
   );
   }
-  else{
     return (
       <div class="center">
     <CircularProgress color="secondary" />
     </div>
     )
-  }
+  
 }
 export default App;
